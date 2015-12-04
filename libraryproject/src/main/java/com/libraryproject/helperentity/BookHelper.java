@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.Book;
-import com.libraryproject.entity.Category;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
@@ -44,15 +38,17 @@ public class BookHelper extends GenericHelper{
         this.closeSession();
     }
     
-    public List<Book> find(String name)
+    public Book find(int id)
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
-        String hql = "from com.libraryproject.entity.Book";
-        Query query = session.createQuery(hql);
-        List<Book> results = query.list();
+        String hql = "from com.libraryproject.entity.Book book WHERE book.id = :id";
+        Query query = session.createQuery(hql).setInteger("id", id);
+        Book results = (Book) query.uniqueResult();
         trans.commit();
         this.closeSession();
+
         return results;
     }
+
 }
