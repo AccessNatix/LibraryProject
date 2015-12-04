@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 d??c. 2015 18:47:52 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.libraryproject.entity.Book" table="book" catalog="library" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="author" class="com.libraryproject.entity.Author" fetch="select">
+            <column name="author_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="category" class="com.libraryproject.entity.Category" fetch="select">
+            <column name="category_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="price" precision="6" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="stock" type="int">
+            <column name="stock" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="image" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
