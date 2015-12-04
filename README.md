@@ -1,13 +1,36 @@
-Librairie
+Bibliothèque virtuelle
 ===================
 
-Dans le cadre de notre 5ème année nous avons dû créer un site de E-Commerce dans le cadre d'un cours de gestion de projet logiciel avec l'entreprise ATOS.
+Dans le cadre de notre 5ème année nous avons dû créer un site de E-Commerce dans le cadre d'un cours de gestion de projet logiciel avec l'entreprise ATOS. Cette bibliothèque virtuelle doit permettre de mutualiser, à travers le web, la gestion des ressources documentaires et bibliothécaires de l'école Neo School et de l’ensemble de ses partenaires internationaux.
 
 ----------
 
 Projet
 -------------
 Dans cette partie nous allons présenter en détail notre projet en décrivant la partie visuelle, ainsi que la partie logique et architecturale. 
+
+Fonctionnalité du projet :
+
+La Bibliothèque Virtuelle doit permettre :
+• le prêt d’ouvrages aux abonnés
+• le suivi des prêts
+
+Le site web doit disposer de deux espaces :
+- un espace pédagogique permettant aux abonnés d’emprunter des ouvrages
+• Etudiants
+• Enseignants
+– d’un espace privé réservé au bibliothécaire et à l’administrateur du système
+
+Les principaux menus attendu sont :
+• Menus
+• Catalogue de livres disponible
+• Possibilité de rechercher les livres selon les matières (Maths-Informatique etc...)
+• Les nouveautés
+• Une barre de recherche (par titre, par auteur, etc...)
+• Un bouton pour s'abonner
+• Affichage des livres
+• Description des livres
+
 
 #### <i class="icon-file"></i> Les vues
 Présentation de l'ensemble des vues.
