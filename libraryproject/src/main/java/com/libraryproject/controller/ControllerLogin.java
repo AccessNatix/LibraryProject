@@ -18,35 +18,31 @@ import org.springframework.web.servlet.ModelAndView;
  * @author anatole
  */
 @Controller
-@RequestMapping("/register")
-public class ControllerRegister {
+@RequestMapping("/login")
+public class ControllerLogin {
     
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getRegisterPage()
+    public ModelAndView getLoginPage()
     {
-        return new ModelAndView("register");
+        return new ModelAndView("login");
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView postRegisterPage(
-        @RequestParam("name") String name,
-        @RequestParam("surname") String surname,
-        @RequestParam("email") String email,
+    public ModelAndView loginRequest(
         @RequestParam("username") String username,
         @RequestParam("password") String password
         )
     {
         UserHelper userHelper = new UserHelper();
 
-        if(!userHelper.isExisting(username, email))
+        if(userHelper.identification(username, password))
         {
-            User user = new User(name, surname, email, username, password);
-            userHelper.save(user);
-            return new ModelAndView("redirect:/index");
+            return new ModelAndView("redirect:/");
         }
         else
         {
             return new ModelAndView("register");
-        }
-    }
+        }        
+    }    
+    
 }

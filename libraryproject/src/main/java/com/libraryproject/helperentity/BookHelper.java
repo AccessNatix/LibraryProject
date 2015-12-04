@@ -19,32 +19,40 @@ public class BookHelper extends GenericHelper{
     
     public void create(Book book)
     {
-        Transaction trans=session.beginTransaction();
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
         this.session.save(book);
         trans.commit();
+        this.closeSession();
     }
     
     public void delete(Book book)
     {
-        Transaction trans=session.beginTransaction();
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
         this.session.delete(book);
         trans.commit();
+        this.closeSession();
     }
     
     public void update(Book book)
     {
-        Transaction trans = session.beginTransaction();
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
         this.session.update(book);
         trans.commit();
+        this.closeSession();
     }
     
     public List<Book> find(String name)
     {
-        Transaction trans = session.beginTransaction();
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
         String hql = "from com.libraryproject.entity.Book";
         Query query = session.createQuery(hql);
         List<Book> results = query.list();
         trans.commit();
+        this.closeSession();
         return results;
     }
 }

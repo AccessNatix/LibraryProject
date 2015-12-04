@@ -7,6 +7,7 @@ package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -14,10 +15,21 @@ import org.hibernate.Session;
  */
 public class GenericHelper {
     
-    protected Session session = null;
+    private SessionFactory sessionFactory = null;
+    protected Session session;
     
     public GenericHelper()
     {
-        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        this.sessionFactory = HibernateUtil.getSessionFactory();
+    }
+    
+    public void openSession()
+    {
+        this.session = this.sessionFactory.openSession();
+    }
+    
+    public void closeSession()
+    {
+        this.session.close();
     }
 }

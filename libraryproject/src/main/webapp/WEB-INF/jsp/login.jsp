@@ -35,19 +35,8 @@
     <!-- /.container -->
 </nav>
     
-<form action="<c:url value="/register"/>" method="POST">
+<form action="<c:url value="/login"/>" method="POST">
   <fieldset class="form-group">
-    <label for="nameinput">Name</label>
-    <input type="text" class="form-control" id="nameinput" name="name" placeholder="Enter name">
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="surnameinput">Surname</label>
-    <input type="text" class="form-control" id="surnameinput" name="surname" placeholder="Enter surname">
-  </fieldset>  
-  <fieldset class="form-group">
-    <label for="emailinput">Email</label>
-    <input type="email" class="form-control" id="emailinput" name="email" placeholder="Enter email">
-  </fieldset>
   <fieldset class="form-group">
     <label for="usernameinput">Username</label>
     <input type="text" class="form-control" id="usernameinput" name="username" placeholder="Enter username">
@@ -58,7 +47,7 @@
   </fieldset>
     
   
-  <button type="submit" class="btn btn-primary">Registerrrrr</button>
+  <button type="submit" class="btn btn-primary">Login</button>
 </form>
     
 <!-- jQuery Version 1.11.1 -->
