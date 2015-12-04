@@ -1,19 +1,19 @@
 Librairie
 ===================
 
-Dans le cadre de notre 5ème anné  nous avons du créer un projet de E-Commerce.
+Dans le cadre de notre 5ème année nous avons dû créer un site de E-Commerce dans le cadre d'un cours de gestion de projet logiciel avec l'entreprise ATOS.
 
 ----------
 
 Projet
 -------------
-Dans cette partie nous allons présenter en détail notre projet en décrivant la partie visuel, ainsi que la partie logique et architecture. 
+Dans cette partie nous allons présenter en détail notre projet en décrivant la partie visuelle, ainsi que la partie logique et architecturale. 
 
 #### <i class="icon-file"></i> Les vues
 Présentation de l'ensemble des vues.
 
 #### <i class="icon-file"></i> Architecture
-Dans cette partie nous allons décrire l'ensemble de l'architecture de notre application JEE. Ainsi que l'ensemble des fonctionnalitées que nous avons embarquer dedans.
+Dans cette partie nous allons décrire l'ensemble de l'architecture de notre application JEE. Ainsi que l'ensemble des fonctionnalitées que nous avons embarquer à l'intérieur.
 
 ##### Spring MVC
 
@@ -21,7 +21,7 @@ Afin de réaliser notre projet avec la maximum de découplage possible nous avon
 
 > **Note:**
 
-> - Nous avons utilisé Spring afin de découvrir  le monde des technologies de l'entreprise utilisées pour des projets de JEE conséquent.
+> - Nous avons utilisé Spring afin de découvrir le monde des technologies utilisées en entreprise lors de projets JEE conséquent.
 
 ###### Petite Description de l'architecture 
 Lors du développement d'un projet Spring, nous devons déclarer un dispatcher qui va analyser l'ensemble des requêtes provenants des clients et qui va diriger les requêtes aux contrôleurs de notre application.
