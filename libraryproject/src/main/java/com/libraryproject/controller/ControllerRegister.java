@@ -42,7 +42,7 @@ public class ControllerRegister {
         {
             User user = new User(name, surname, email, username, password);
             userHelper.save(user);
-            return new ModelAndView("redirect:/index");
+            return new ModelAndView("redirect:/");
         }
         else
         {

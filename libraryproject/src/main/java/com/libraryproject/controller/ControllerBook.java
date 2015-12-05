@@ -8,15 +8,11 @@ package com.libraryproject.controller;
 import com.libraryproject.entity.Book;
 import com.libraryproject.helperentity.BookHelper;
 import java.util.HashMap;
-import org.hamcrest.MatcherAssert;
-import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
 
 /**
  *
@@ -25,18 +21,27 @@ import static org.hamcrest.Matchers.nullValue;
 @Controller
 public class ControllerBook {
     
-    @RequestMapping(value ="/book/news")
-    public ModelAndView getDefaultPage()
+    @RequestMapping(value = "/book/news")
+    public ModelAndView getNewsPage()
     {
+        HashMap<String,List<Book>> maps = new HashMap<>();
+        
         BookHelper bookHelper = new BookHelper();
-        
-        //bookHelper.
-        
-        return new ModelAndView("news");
+        List<Book> books =  bookHelper.findAll();
+       
+        if(books != null)
+        {
+            maps.put("books",books);
+            return new ModelAndView("news", maps);
+        }
+        else
+        {
+            return new ModelAndView("news");
+        }
     }
     
     @RequestMapping(value ="/book/{id}")
-    public ModelAndView getDefaultPage(@PathVariable(value="id") final int id)
+    public ModelAndView getBookPage(@PathVariable(value="id") final int id)
     {
         BookHelper bookHelper = new BookHelper();
         
@@ -61,8 +66,5 @@ public class ControllerBook {
             return new ModelAndView("book", maps);
 
         }
-
-        
-
     }
 }

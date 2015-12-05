@@ -35,20 +35,12 @@
     <!-- /.container -->
 </nav>
     
-<!-- Login -->
-<form action="<c:url value="/book/search"/>" method="POST">
-  <fieldset class="form-group">
-  <fieldset class="form-group">
-    <label for="usernameinput">Category</label>
-    <input type="text" class="form-control" id="usernameinput" name="username" placeholder="Enter username">
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="passwordinput">Author</label>
-    <input type="password" class="form-control" id="passwordinput" name="password" placeholder="Enter password">
-  </fieldset>
-  
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<!-- Books -->
+<c:forEach var="book" items="${books}" varStatus="i">
+    <ul>
+        <a href="<c:url value="/book/${book.id}"/>"><li>${book.name}</li></a>
+    </ul>
+</c:forEach>
     
 <!-- jQuery Version 1.11.1 -->
 <script src="<c:url value="/bootstraps/js/jquery.js" />"></script>

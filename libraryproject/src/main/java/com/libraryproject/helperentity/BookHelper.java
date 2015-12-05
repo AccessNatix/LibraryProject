@@ -50,5 +50,17 @@ public class BookHelper extends GenericHelper{
 
         return results;
     }
+    
+    public List<Book> findAll()
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "from com.libraryproject.entity.Book";
+        Query query = session.createQuery(hql);
+        List<Book> results = query.list();
+        trans.commit();
+        this.closeSession();
 
+        return results;        
+    }
 }
