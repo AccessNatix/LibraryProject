@@ -7,53 +7,97 @@
 
 <jsp:attribute name="body_area">
     
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">School webSite</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Class</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
     <!-- Page Content -->
+    <div class="banner">
+    </div>
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>It's our website</h1>
+                <h1>Welcome to Neo School Library</h1>
             </div>
         </div>
-        <!-- /.row -->
-
+        
+        <div class="panelGrid">
+            <div id="categories">
+                <div class="pg-title">
+                    <span>Categories</span>
+                </div>
+                <div class="pg-content">
+                    <ul>
+                        <li>
+                            <a href="#">Electronics</a>
+                        </li>
+                        <li>
+                            <a href="#">Computer Science</a>
+                        </li>
+                        <li>
+                            <a href="#">Mathematics</a>
+                        </li>
+                        <li>
+                            <a href="#">Physics</a>
+                        </li>
+                        <li>
+                            <a href="#">Mecanics</a>
+                        </li>
+                        <li>
+                            <a href="#">Biology</a>
+                        </li>
+                    </ul>
+                    <a class="more navbar-right margin-r40 margin-t10" href="#">List All ></a>
+                </div>
+            </div>
+            <div id="mostPopular">
+                <div class="pg-title">
+                    <span>Most popular books</span>
+                </div>
+                <div class="pg-content">
+                    <ul>
+                        <li>
+                            <a href="#">Book #1</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                        <li>
+                            <a href="#">Book #2</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                        <li>
+                            <a href="#">Book #3</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                        <li>
+                            <a href="#">Book #4</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                        <li>
+                            <a href="#">Book #5</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                        <li>
+                            <a href="#">Book #6</a>
+                            <span class="bookAuthor">by Author Name</span>
+                        </li>
+                    </ul>
+                    <a class="more navbar-right margin-r40 margin-t10" href="#">List All ></a>
+                </div>
+            </div>
+            <div id="search">
+                <div class="pg-title">
+                    <span>Search</span>
+                </div>
+                <div class="pg-content">
+                    <input id="s" name="seach" type="search" placeholder="Search ...">
+                    <div id="searchCategories">
+                        <div class="radio"><label><input type="radio" name="searchCategory" value="BookName" checked="checked" />Book Name</label></div>
+                        <div class="radio"><label><input type="radio" name="searchCategory" value="AuthorName" />Author Name</label></div>
+                        <div class="radio"><label><input type="radio" name="searchCategory" value="BookCategory" />Book Category</label></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
     <!-- /.container -->
 
-    <!-- jQuery Version 1.11.1 -->
-    <script src="<c:url value="/bootstraps/js/jquery.js" />"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<c:url value="/bootstraps/js/bootstrap.min.js"/>"></script>
 
 </jsp:attribute>
     

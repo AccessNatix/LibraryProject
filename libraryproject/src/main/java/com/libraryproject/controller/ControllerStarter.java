@@ -13,15 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class ControllerStarter {
-    @Autowired
-    private SessionBean mSessionBean;
     
     @RequestMapping("/")
     public ModelAndView index(HttpSession session)
-    {
-        mSessionBean.setMessage("coucou);
-        session.setAttribute("session_bean", mSessionBean);
-        
+    {        
         return new ModelAndView("index");
     }
 }

@@ -28,6 +28,7 @@
 	</bean>
         
         <mvc:resources mapping="/bootstraps/**" location="/bootstraps/theme1/" /> 
+        <mvc:resources mapping="/includes/**" location="/includes/**" />
  
         <!-- configure all aspects of my project -->
         <aop:config>

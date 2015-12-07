@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
  * @author anatole
  */
 @Controller
-@RequestMapping("/register")
 public class ControllerRegister {
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
     public ModelAndView getRegisterPage()
     {
         return new ModelAndView("register");
     }
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/register", method = RequestMethod.POST)
     public ModelAndView postRegisterPage(
         @RequestParam("name") String name,
         @RequestParam("surname") String surname,
@@ -49,4 +49,30 @@ public class ControllerRegister {
             return new ModelAndView("register");
         }
     }
+    
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public ModelAndView getLoginPage()
+    {
+        return new ModelAndView(new RedirectView("register?signin"));
+    }
+    
+    @RequestMapping(value="/login", method = RequestMethod.POST)
+    public ModelAndView loginRequest(
+        @RequestParam("username") String username,
+        @RequestParam("password") String password
+        )
+    {
+        UserHelper userHelper = new UserHelper();
+
+        if(userHelper.identification(username, password))
+        {
+            return new ModelAndView("redirect:/");
+        }
+        else
+        {
+            return new ModelAndView(new RedirectView("register?signin"));
+        }        
+    }    
+
+    
 }
