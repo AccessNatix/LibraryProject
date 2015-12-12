@@ -1,10 +1,19 @@
 
 $(document).ready(function(e){
    
-   if(getUrlParameter("signin")===true){
+   $('.relativeContainer').height($('#signup').height());
+   
+   if(getUrlParameter("signin")===true && getUrlParameter("string")===undefined){
        $('#signup').css('right', "100%");
        $('#signin').css('display: block');
        switchToSingin();
+   }
+   if(getUrlParameter("string")==="ERROR_SIGNIN"){
+       $('#error-signin-msg').css('display', 'block').text("Invalid username/password !");
+   }else if(getUrlParameter("string")==="ERROR_REGISTER_EXISTS"){
+       $('#error-signup-msg').css('display', 'block').text("Username or Email alreay exists!");
+   }else if(getUrlParameter("string")==="ERROR_REGISTER_PASSWORD"){
+       $('#error-signup-msg').css('display', 'block').text("Please enter the same password in the repeat password field!");
    }
    $(document).on('click', 'a#signinlnk', function(e){
         var pathname = window.location.pathname;

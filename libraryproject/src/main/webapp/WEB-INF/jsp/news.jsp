@@ -3,37 +3,174 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:generic_page title="Register page">
+<t:generic_page title="News page">
     
 <jsp:attribute name="body_area">
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">School webSite</a>
+    
+    <div class="center-block width80">
+        
+        <div class="newsCategories">
+            
+            <div class="pg-title">
+                <span>Categories</span>
+            </div>
+            <div class="pg-content">
+                <ul>
+                    <c:forEach var="category" items="${categories}">
+                        <li>
+                            <a href="#">${category.name}</a>
+                        </li>                        
+                    </c:forEach>
+                </ul>
+            </div>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Class</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+        
+        <div class="booksSearch width70 width-m-767-100">
+            
+            <div id="search">
+                <div class="pg-title">
+                    <span>Search</span>
+                </div>
+                <div class="pg-content margin-b20">
+                    <input id="s" class="inline" name="seach" type="search" placeholder="Search ...">
+                    <span class="separatorWord">in:</span> 
+                    <div id="searchCategories" class="inline margin-lr5 margin-5 width-m-1000">
+                        <div class="radio inline margin-l4p"><label><input type="radio" class="top--2" name="searchCategory" value="BookName" checked="checked" />Book Name</label></div>
+                        <div class="radio inline margin-l4p"><label><input type="radio" class="top--2" name="searchCategory" value="AuthorName" />Author Name</label></div>
+                        <div class="radio inline margin-l4p"><label><input type="radio" class="top--2" name="searchCategory" value="BookCategory" />Book Category</label></div>
+                    </div>
+                </div>
+            </div>
+            <div id="listBooks">
+                <c:forEach var="book" items="${books}">
+                    <a href="/book/${book.id}" class="bookInfoLnk">
+                        <div class="booksItem">
+                            <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                            <span class="booksInfo">
+                                Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                            </span>
+                        </div>
+                    </a>              
+                </c:forEach>
+                
+
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="id" class="bookInfoLnk">
+                    <div class="booksItem">
+                        <img src="<c:url value="/includes/images/blankbook.jpg"/>" width="140" alt="" title="" />
+                        <span class="booksInfo">
+                            Book title <span class="by">by</span> <span class="author-name">Author name</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
         </div>
-        <!-- /.navbar-collapse -->
+        
     </div>
-    <!-- /.container -->
-</nav>
     
 <!-- Books -->
 <c:forEach var="book" items="${books}" varStatus="i">
@@ -41,13 +178,7 @@
         <a href="<c:url value="/book/${book.id}"/>"><li>${book.name}</li></a>
     </ul>
 </c:forEach>
-    
-<!-- jQuery Version 1.11.1 -->
-<script src="<c:url value="/bootstraps/js/jquery.js" />"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="<c:url value="/bootstraps/js/bootstrap.min.js"/>"></script>
-    
 </jsp:attribute>
     
 </t:generic_page>

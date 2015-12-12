@@ -5,8 +5,10 @@
  */
 package com.libraryproject.controller;
 
+import com.libraryproject.entity.Borrowed;
 import com.libraryproject.entity.User;
 import com.libraryproject.helperentity.UserHelper;
+import java.util.HashSet;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,46 +35,32 @@ public class ControllerRegister {
         @RequestParam("surname") String surname,
         @RequestParam("email") String email,
         @RequestParam("username") String username,
-        @RequestParam("password") String password
+        @RequestParam("password") String password,
+        @RequestParam("repeat-password") String passwordRepeat
         )
     {
         UserHelper userHelper = new UserHelper();
 
-        if(!userHelper.isExisting(username, email))
+        if(userHelper.isExisting(username, email) <= 0)
         {
-            User user = new User(name, surname, email, username, password);
-            userHelper.save(user);
-            return new ModelAndView("redirect:/");
+            if(passwordRepeat.equals(password))
+            {
+                User user = new User(name, surname, email, username, password, new HashSet<Borrowed>());
+                userHelper.save(user);
+                return new ModelAndView("redirect:/");                
+            }
+            else
+            {
+                // repeat password is wrong
+                ModelAndView view = new ModelAndView(new RedirectView("register?string=ERROR_REGISTER_PASSWORD"));
+                return view;
+            }
         }
         else
         {
-            return new ModelAndView("register");
+            // user already existing 
+            ModelAndView view = new ModelAndView(new RedirectView("register?string=ERROR_REGISTER_EXISTS"));
+            return view;
         }
     }
-    
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public ModelAndView getLoginPage()
-    {
-        return new ModelAndView(new RedirectView("register?signin"));
-    }
-    
-    @RequestMapping(value="/login", method = RequestMethod.POST)
-    public ModelAndView loginRequest(
-        @RequestParam("username") String username,
-        @RequestParam("password") String password
-        )
-    {
-        UserHelper userHelper = new UserHelper();
-
-        if(userHelper.identification(username, password))
-        {
-            return new ModelAndView("redirect:/");
-        }
-        else
-        {
-            return new ModelAndView(new RedirectView("register?signin"));
-        }        
-    }    
-
-    
 }

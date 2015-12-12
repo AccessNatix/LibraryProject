@@ -13,7 +13,7 @@ drop table if EXISTS `book`;
 drop table if EXISTS `author`;
 drop table if EXISTS `category`;
 drop table if EXISTS `user`;
-
+drop table if EXISTS `borrowed`;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -45,9 +45,18 @@ CREATE TABLE IF NOT EXISTS `book` (
   `description` tinytext NOT NULL,
   `category_id` int(10) unsigned NOT NULL,
   `stock` int(10) unsigned NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `image` blob NOT NULL,
   `author_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`category_id`) REFERENCES `category`(`id`),
   FOREIGN KEY (`author_id`) REFERENCES `author`(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `borrowed` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `book_id` int(10) unsigned NOT NULL,
+    `user_id` int(10) unsigned NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`book_id`) REFERENCES `book`(`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );

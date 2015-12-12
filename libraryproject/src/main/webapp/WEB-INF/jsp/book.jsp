@@ -3,48 +3,55 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:generic_page title="Register page">
-    
+<t:generic_page title="Book information page">
+
 <jsp:attribute name="body_area">
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">School webSite</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Class</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-
-<h2>${Name}</h2>
-<h4>${Author}</h4>
-<h4>${Category}</h4>
-
-<!-- jQuery Version 1.11.1 -->
-<script src="<c:url value="/bootstraps/js/jquery.js" />"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<c:url value="/bootstraps/js/bootstrap.min.js"/>"></script>
     
+    <!-- Page Content -->
+    
+    <div class="width60 center-block">
+        
+        <h1 class="text-center margin-h20 clearfix">Book Information</h1>
+        <div class="margin-h20 bookInfo">
+            <div class="leftSide">
+                <img src="<c:url value="/images/${image}"/>" width="250" alt="" title="" />
+                <span></span>
+            </div>
+            <div class="Information rightSide">
+                <table border="0">
+                    <tr>
+                        <td>Title: </td>
+                        <td>${title}</td>
+                    </tr>
+                    <tr>
+                        <td>By: </td>
+                        <td>${author}</td>
+                    </tr>
+                    <tr>
+                        <td>Stock: </td>
+                        <td>99 available</td>
+                    </tr>
+                    <tr>
+                        <td>Category: </td>
+                        <td>${category}</td>
+                    </tr>
+                    <tr>
+                        <td>Description: </td>
+                        <td>${description}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a href="#" title="" class="btn btn-primary padding-w30" >Burrow</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- /.container -->
+
 </jsp:attribute>
     
 </t:generic_page>

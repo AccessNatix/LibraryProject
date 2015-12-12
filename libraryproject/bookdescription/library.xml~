@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<library>
+    <authors>
+        <author>
+            <id>1</id>
+            <name>anatole curlier</name>
+        </author>
+        <author>
+            <id>2</id>
+            <name>amir haderbache</name>
+        </author>
+        <author>
+            <id>3</id>
+            <name>romainnnnnn</name>
+        </author>
+    </authors>
+    
+       
+    <categories>
+        <category>
+            <id>1</id>
+            <name>electronique</name>                
+        </category>
+        <category>
+            <id>2</id>
+            <name>musique</name>                
+        </category>
+    </categories>
+
+      
+    <books>
+        <book>
+            <title>apple</title>
+            <price>10</price>
+            <description>hello</description>
+            <stock>30</stock>
+            <image>blankbook.jpg</image>
+            <author_id>1</author_id>
+            <category_id>1</category_id>
+        </book>
+        <book>
+            <title>violon</title>
+            <price>10</price>
+            <description>hello</description>
+            <stock>30</stock>
+            <image>blankbook.jpg</image>
+            <author_id>1</author_id>
+            <category_id>2</category_id>
+        </book>
+    </books>
+    
+    <users>
+        <user>
+            <name>Curlier</name>
+            <surname>Anatole</surname>
+            <email>anatole.curlier@gmail.com</email>
+            <username>plop</username>
+            <password>plop</password>
+        </user>
+        <user>
+            <name>Curlier</name>
+            <surname>Anatole</surname>
+            <email>anatole2.curlier@gmail.com</email>
+            <username>plop2</username>
+            <password>plop2</password>
+        </user>
+        <user>
+            <name>Haderbache</name>
+            <surname>Amir</surname>
+            <email>amir.haderbache@gmail.com</email>
+            <username>amir</username>
+            <password>123</password>
+        </user>
+    </users>
+    
+</library>

@@ -27,8 +27,17 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
         
+        <mvc:interceptors>
+            <mvc:interceptor>
+                <mvc:mapping path="/profil"/>
+                <bean class="Filter.FilterUser" />
+            </mvc:interceptor>
+        </mvc:interceptors> 
+                
         <mvc:resources mapping="/bootstraps/**" location="/bootstraps/theme1/" /> 
         <mvc:resources mapping="/includes/**" location="/includes/**" />
+        <mvc:resources mapping="/images/**" location="/includes/images/**" />
+        <mvc:resources mapping="/books/**" location="/includes/books/**" />
  
         <!-- configure all aspects of my project -->
         <aop:config>
@@ -37,6 +46,11 @@
                 <aop:before pointcut-ref="mainControllerHandling" method="LogMessage"/>
             </aop:aspect>
         </aop:config>
+        
+        <bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+            <property name="maxUploadSize" value="2097152"/>
+        </bean>
         
         <!-- declare logging aspect node -->
         <bean id="loggingAspect" class="com.libraryproject.aspect.Logging"/>

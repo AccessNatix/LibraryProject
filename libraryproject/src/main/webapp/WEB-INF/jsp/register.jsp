@@ -11,7 +11,7 @@
         <div id="signup">
             <h1 class="text-center margin-h20 clearfix">Sign up</h1>
 
-            <form action="POST" class="box-center width40 fieldset-mt20">
+            <form action="<c:url value="/register"/>" method="POST" class="box-center width40 fieldset-mt20">
               <fieldset class="form-group">
                 <label for="nameinput">Name</label>
                 <input type="text" class="form-control" id="nameinput" name="name" placeholder="Enter name" required />
@@ -37,6 +37,7 @@
                 <input type="password" class="form-control" id="repeatpasswordinput" name="repeat-password" placeholder="Repeat password" required />
               </fieldset>
 
+              <span class="error-msg" id="error-signup-msg"></span>
 
               <button type="submit" class="btn btn-primary">Create my account</button>
             </form>
@@ -45,8 +46,10 @@
         <div id="signin">
             <h1 class="text-center margin-h20 clearfix">Sign in</h1>
 
-            <form action="POST" class="box-center width40 fieldset-mt20">
-              <fieldset class="form-group">
+            <form action="<c:url value="/login"/>" method="POST" class="box-center width40 fieldset-mt20">
+                ${error}
+                
+                <fieldset class="form-group">
                 <label for="usernameinput">Username</label>
                 <input type="text" class="form-control" id="usernameinput" name="username" placeholder="Enter username" required />
               </fieldset>
@@ -54,7 +57,8 @@
                 <label for="passwordinput">Password</label>
                 <input type="password" class="form-control" id="passwordinput" name="password" placeholder="Enter password" required />
               </fieldset>
-
+                
+              <span class="error-msg" id="error-signin-msg"></span>
 
               <button type="submit" class="btn btn-primary">Sign In</button>
               <div class="navbar-right margin-t10 margin-r5">

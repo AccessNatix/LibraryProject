@@ -16,8 +16,27 @@ and open the template in the editor.
     padding-top: 15px;
     border-top: 1px solid #DEDEDE;
 }
+.navbar-brand{
+    font-size: 30px;
+}
 
-
+.error-msg{
+    color: red;
+    font-size: 15px;
+    font-style: italic;
+    display: block;
+    margin: 0 0 10px 5px;
+    display: none;
+}
+.hidden{
+    display: none;
+}
+.inline {
+    display: inline !important;
+}
+.block {
+    display: block !important;
+}
 .banner{
     background: url("../images/banner.png");
     background-repeat: no-repeat;
@@ -36,6 +55,9 @@ and open the template in the editor.
 .width40{
     width: 40%;
 }
+.width70{
+    width: 70%;
+}
 .width80{
     width: 80%;
 }
@@ -51,11 +73,38 @@ and open the template in the editor.
 .margin-r40{
     margin-right: 40px;
 }
+.margin-l4p{
+    margin-left: 4% !important;
+}
+.margin-l0{
+    margin-left: 0 !important;
+}
 .margin-t30{
     margin-top: 30px;
 }
+.margin-t5{
+    margin-top: 5px;
+}
+.top--2{
+    top: -2px !important;
+}
+.margin-b20{
+    margin-bottom: 20px !important;
+}
 .navbar-left {
     float: left !important;
+}
+.margin-lr5{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.margin-lr15{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.padding-w30 {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .navbar-right {
     float: right !important;
@@ -71,15 +120,45 @@ and open the template in the editor.
     margin-top: 20px;
 }
 .footerh{
-    margin-bottom: 70px;
+    margin-bottom: 100px;
 }
 @media (max-width: 767px) {
-    .width40, .width60{
-        width: 80%;
+    .width40, .width60, .width70{
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .panelGrid > div{
+    .panelGrid > div, .newsCategories{
         width: 100% !important;
         display: block !important;
+    }
+}
+@media (max-width: 1400px) {
+    .width-m-767-100{
+        width: 100%;
+    }
+}
+@media (max-width: 1000px) {
+    .width-m-1000{
+        display: block !important;
+        margin-top: 5px;
+    }
+    .inline{
+        display: block !important;
+    }
+    .top--2 {
+        margin-top: 3px !important;
+    }
+    .separatorWord{
+        display: block;
+        text-align: center;
+    }
+    .radio>label{
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 200px !important;
     }
 }
 
@@ -180,4 +259,100 @@ div.radio{
 }
 .more:hover{
     color: rgb(200, 200, 255);
+}
+
+
+
+/* Book information page */
+.bookInfo {
+    margin-top: 30px;
+}
+.bookInfo > div {
+    vertical-align: top;
+    display: inline-block;
+}
+.bookInfo .leftSide{
+    width: 250px;
+}
+.bookInfo .rightSide{
+    width: 500px;
+    margin-left: 20px;
+}
+.bookInfo > img {
+    display: block;
+    margin: 0 auto;
+}
+.Information table tr td {
+    padding: 10px;
+    vertical-align: top;
+}
+.Information table tr td:first-child {
+    color: #1b6d85;
+}
+.Information table tr td:last-child {
+    color: #333;
+}
+
+/*  News Page  */
+.newsCategories {
+    display: inline-block;
+    width: 300px;
+    margin-right: 15px;
+}
+.booksSearch{
+    display: inline-block;
+    vertical-align: top;
+}
+.separatorWord{
+    color: #555;
+    margin: 0 10px;
+}
+#listBooks .booksItem{
+    display: inline-block;
+    margin: 12px 22px;
+    width: 150px;
+}
+#listBooks .booksItem > img {
+    display: block;
+    margin: 0 auto;
+}
+#listBooks .booksItem > span.booksInfo {
+    display: block;
+    margin: 5px 0;
+    text-align: center;
+}
+#listBooks .booksInfo .by{
+    color: #888;
+}
+#listBooks .booksInfo .author-name{
+    color: #555;
+}
+a.bookInfoLnk{
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+
+/* ADMIN PANEL */
+.uploader, .downloader {
+    margin: 25px auto;
+    width: 80%;
+}
+.title {
+    margin: 25px 0;
+}
+.separator{
+    margin: 40px auto;
+    width: 80%;
+}
+.separator>span{
+    position: relative;
+    bottom: -15px;
+    font-size: 30px;
+    color: #999;
+    font-style: italic;
+    display: block;
+    text-align: center;
 }

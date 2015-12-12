@@ -1,9 +1,6 @@
 package com.libraryproject.utility;
 
-import java.util.UUID;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+import java.io.Serializable;
 
 /**
  * Session bean for the user
@@ -11,8 +8,17 @@ import org.springframework.stereotype.Component;
  * 
  * @author anatole
  */
-@Component
-@Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class SessionBean {
-    private final String id = UUID.randomUUID().toString();
+public class SessionBean implements Serializable{
+   
+    private final int id;
+    
+    public SessionBean(int id)
+    {
+        this.id = id;
+    }
+    
+    public int getId()
+    {
+        return this.id;
+    }
 }

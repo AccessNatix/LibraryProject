@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.Category;
@@ -43,13 +38,59 @@ public class CategoryHelper extends GenericHelper{
         this.closeSession();
     }
     
-    public List<Category> find(String name)
+    public void deleteAll()
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "DELETE com.libraryproject.entity.Category";
+        Query query = this.session.createQuery(hql);
+        query.executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }
+    
+    public List<Category> findAll()
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
         String hql = "from com.libraryproject.entity.Category";
-        Query query = session.createQuery(hql);
+        Query query = session.createQuery(hql)  ;
         List<Category> results = query.list();
+        trans.commit();
+        this.closeSession();
+        return results;
+    }
+    
+    public void delete(int id)
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "DELETE com.libraryproject.entity.Category category where category.id = :id";
+        Query query = this.session.createQuery(hql).setInteger("id", id);
+        query.executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }
+    
+    public Category find(String name)
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "from com.libraryproject.entity.Category category where category.name = :name";
+        Query query = session.createQuery(hql).setString("name", name);
+        Category results = (Category) query.uniqueResult();
+        trans.commit();
+        this.closeSession();
+        return results;
+    } 
+    
+    public Category find(int id)
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "from com.libraryproject.entity.Category category where category.id = :id";
+        Query query = session.createQuery(hql).setInteger("id", id);
+        Category results = (Category) query.uniqueResult();
         trans.commit();
         this.closeSession();
         return results;

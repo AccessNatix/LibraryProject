@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 3 d??c. 2015 18:47:52 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11 d??c. 2015 20:36:42 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.libraryproject.entity.User" table="user" catalog="library" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -23,5 +23,11 @@
         <property name="password" type="string">
             <column name="password" not-null="true" />
         </property>
+        <set name="borroweds" table="borrowed" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" not-null="true" />
+            </key>
+            <one-to-many class="com.libraryproject.entity.Borrowed" />
+        </set>
     </class>
 </hibernate-mapping>

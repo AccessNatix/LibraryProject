@@ -7,6 +7,7 @@ package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.User;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -30,12 +31,81 @@ public class UserHelper extends GenericHelper{
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
-        this.session.delete(user);
+        this.session.update(user);
         trans.commit();
         this.closeSession();
     }
     
-    public boolean isExisting(String username,String email)
+    //TODO
+    public void delete(int id)
+    {
+        // not yet implemented
+    }
+    
+    public void deleteAll()
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "DELETE com.libraryproject.entity.User";
+        Query query = this.session.createQuery(hql);
+        query.executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }
+    
+    public User getUserWithId(int user)
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        
+        String hql = "FROM com.libraryproject.entity.User user WHERE user.id = :id";
+        Query query = this.session.createQuery(hql).setInteger("id", user);
+        User result = (User) query.uniqueResult();
+        
+        Hibernate.initialize(result.getBorroweds());
+
+        trans.commit();
+        this.closeSession();
+        
+        return result;
+    }
+    
+    public List<User> findAll()
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        
+        String hql = "FROM com.libraryproject.entity.User user";
+        Query query = this.session.createQuery(hql);
+        List<User> result = (List<User>) query.list();
+        
+        for(User user : result)
+        {
+            Hibernate.initialize(user.getBorroweds());
+        }
+        
+        trans.commit();
+        this.closeSession();
+        
+        return result;
+    }
+    
+    public User find(int id)
+    {
+        this.openSession();
+        Transaction trans= this.session.beginTransaction();
+        String hql = "FROM com.libraryproject.entity.User user WHERE user.id = :id";
+        Query query = this.session.createQuery(hql).setInteger("id", id);
+        User result = (User) query.uniqueResult();
+        
+        Hibernate.initialize(result.getBorroweds());
+        
+        trans.commit();
+        this.closeSession();
+        return result;
+    }
+    
+    public int isExisting(String username,String email)
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
@@ -44,10 +114,18 @@ public class UserHelper extends GenericHelper{
         List<User> results = query.list();
         trans.commit();
         this.closeSession();
-        return results.size() > 0;
+        
+        if(results.size() > 0)
+        {
+            return results.get(0).getId();
+        }
+        else
+        {
+            return -1;
+        }
     }
     
-    public boolean identification(String username, String password)
+    public int identification(String username, String password)
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
@@ -56,6 +134,14 @@ public class UserHelper extends GenericHelper{
         List<User> results = query.list();
         trans.commit();
         this.closeSession();
-        return results.size() > 0;
+        
+        if(results.size() > 0)
+        {
+            return results.get(0).getId();
+        }
+        else
+        {
+            return -1;
+        }
     }
 }
