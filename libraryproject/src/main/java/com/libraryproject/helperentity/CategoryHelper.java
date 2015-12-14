@@ -1,7 +1,9 @@
 package com.libraryproject.helperentity;
 
+import com.libraryproject.entity.Book;
 import com.libraryproject.entity.Category;
 import java.util.List;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 
@@ -34,6 +36,17 @@ public class CategoryHelper extends GenericHelper{
         this.openSession();
         Transaction trans= this.session.beginTransaction();
         this.session.update(category);
+        trans.commit();
+        this.closeSession();
+    }
+    
+    public void reset()
+    {
+        deleteAll();
+        
+        this.openSession();
+        Transaction trans = this.session.beginTransaction();
+        this.session.createSQLQuery("ALTER TABLE category AUTO_INCREMENT = 1;").executeUpdate();
         trans.commit();
         this.closeSession();
     }
@@ -91,6 +104,16 @@ public class CategoryHelper extends GenericHelper{
         String hql = "from com.libraryproject.entity.Category category where category.id = :id";
         Query query = session.createQuery(hql).setInteger("id", id);
         Category results = (Category) query.uniqueResult();
+        
+        Hibernate.initialize(results.getBooks());
+        
+        for(Book book : results.getBooks())
+        {
+            Hibernate.initialize(book);
+            Hibernate.initialize(book.getAuthor());
+            Hibernate.initialize(book.getCategory());
+        }
+        
         trans.commit();
         this.closeSession();
         return results;

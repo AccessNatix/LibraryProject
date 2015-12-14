@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.12.12 à 11:35:22 AM CET 
+// Généré le : 2015.12.14 à 09:44:38 AM CET 
 //
 
 
@@ -35,14 +35,13 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Image_QNAME = new QName("", "image");
-    private final static QName _Description_QNAME = new QName("", "description");
-    private final static QName _Title_QNAME = new QName("", "title");
     private final static QName _Password_QNAME = new QName("", "password");
     private final static QName _CategoryId_QNAME = new QName("", "category_id");
-    private final static QName _Price_QNAME = new QName("", "price");
     private final static QName _Surname_QNAME = new QName("", "surname");
     private final static QName _Name_QNAME = new QName("", "name");
+    private final static QName _Description_QNAME = new QName("", "description");
     private final static QName _Id_QNAME = new QName("", "id");
+    private final static QName _Title_QNAME = new QName("", "title");
     private final static QName _Stock_QNAME = new QName("", "stock");
     private final static QName _AuthorId_QNAME = new QName("", "author_id");
     private final static QName _Email_QNAME = new QName("", "email");
@@ -141,26 +140,6 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "description")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    public JAXBElement<String> createDescription(String value) {
-        return new JAXBElement<String>(_Description_QNAME, String.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "title")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    public JAXBElement<String> createTitle(String value) {
-        return new JAXBElement<String>(_Title_QNAME, String.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "", name = "password")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     public JAXBElement<String> createPassword(String value) {
@@ -174,15 +153,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "", name = "category_id")
     public JAXBElement<BigInteger> createCategoryId(BigInteger value) {
         return new JAXBElement<BigInteger>(_CategoryId_QNAME, BigInteger.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "", name = "price")
-    public JAXBElement<BigInteger> createPrice(BigInteger value) {
-        return new JAXBElement<BigInteger>(_Price_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -205,12 +175,32 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "description")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    public JAXBElement<String> createDescription(String value) {
+        return new JAXBElement<String>(_Description_QNAME, String.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "id")
     public JAXBElement<BigInteger> createId(BigInteger value) {
         return new JAXBElement<BigInteger>(_Id_QNAME, BigInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "title")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    public JAXBElement<String> createTitle(String value) {
+        return new JAXBElement<String>(_Title_QNAME, String.class, null, value);
     }
 
     /**

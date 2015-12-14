@@ -13,7 +13,6 @@
 <%@attribute name="head_area" fragment="true"%>
 <%@attribute name="body_area" fragment="true"%>
 
-
     <head>
         <title>${title}</title>
         
@@ -63,12 +62,34 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">Latest Books</a>
-                        </li>
-                        <li>
-                            <a href="register?signin" id="signinlnk">Sign In</a>
-                        </li>
+                        <c:if test="${sessionScope.user.type}">
+                            <li>
+                               <a href="<c:url value="/admin" />" id="adminlnk">Admin</a>
+                           </li>
+                        </c:if>
+
+                        <c:if test="${sessionScope.user != null}">
+                            <li>
+                                <a href="<c:url value="/news" />">Latest Books</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value="/profile" />" id="profilelnk">Profile</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value="/logout" />" id="profilelnk">Logout</a>
+                            </li>                            
+                        </c:if>
+
+                        <c:if test="${sessionScope.user == null}">
+                            <li>
+                                <a href="<c:url value="/register?signin" />" id="signinlnk">Sign In</a>
+                            </li>
+
+                            <li>
+                                <a href="<c:url value="/register" />" id="signinlnk">Register</a>
+                            </li>
+                            
+                        </c:if>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -77,8 +98,6 @@
         </nav>
 
         <jsp:invoke fragment="body_area"/>
-        
-        
         
         
         <div class="footerh"></div>

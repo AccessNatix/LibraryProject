@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2015.12.12 à 11:35:22 AM CET 
+// Généré le : 2015.12.14 à 09:44:38 AM CET 
 //
 
 
@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{}title"/>
- *         &lt;element ref="{}price"/>
  *         &lt;element ref="{}description"/>
  *         &lt;element ref="{}stock"/>
  *         &lt;element ref="{}image"/>
@@ -47,7 +46,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "title",
-    "price",
     "description",
     "stock",
     "image",
@@ -61,8 +59,6 @@ public class Book {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
     protected String title;
-    @XmlElement(required = true)
-    protected BigInteger price;
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
@@ -100,30 +96,6 @@ public class Book {
      */
     public void setTitle(String value) {
         this.title = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété price.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getPrice() {
-        return price;
-    }
-
-    /**
-     * Définit la valeur de la propriété price.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setPrice(BigInteger value) {
-        this.price = value;
     }
 
     /**

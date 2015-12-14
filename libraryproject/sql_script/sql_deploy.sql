@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mail` varchar(45) NOT NULL UNIQUE,
   `username` varchar(45) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
+  `type` BOOLEAN,
   PRIMARY KEY (`id`)
 );
 
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 create table IF NOT EXISTS `author`(
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `name` varchar(16),
+    `name` varchar(140),
     PRIMARY KEY(`id`)
 );
 
@@ -45,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   `description` tinytext NOT NULL,
   `category_id` int(10) unsigned NOT NULL,
   `stock` int(10) unsigned NOT NULL,
-  `image` blob NOT NULL,
+  `image` varchar(60) NOT NULL,
   `author_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`category_id`) REFERENCES `category`(`id`),

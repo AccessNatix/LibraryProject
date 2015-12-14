@@ -81,28 +81,26 @@ public class AddXmlToBdd {
         List<com.libraryproject.inportordumpbdd.xsd.User> users = library.getUsers().getUser();
         
         // delete borrowe book
-        this.mBorrowedHelper.deleteAll();
+        this.mBorrowedHelper.reset();
         // delete books
-        this.mBookHelper.deleteAll();
+        this.mBookHelper.reset();
         // delete users
-        this.mUserHelper.deleteAll();
+        this.mUserHelper.reset();
         // delete authors
-        this.mAuthorHelper.deleteAll();
+        this.mAuthorHelper.reset();
         // delete category
-        this.mCategoryHelper.deleteAll();
+        this.mCategoryHelper.reset();
         
         // put all user inside the database
         for(com.libraryproject.inportordumpbdd.xsd.User user : users)
         {
-            System.err.println("add user");
-            User userTmp = new User(user.getName(), user.getSurname(), user.getEmail(), user.getUsername(), user.getPassword(), new HashSet<Borrowed>());
+            User userTmp = new User(user.getName(), user.getSurname(), user.getEmail(), user.getUsername(), user.getPassword(), false, new HashSet<Borrowed>());
             this.mUserHelper.save(userTmp);
         }
         
         // put all category inside the database
         for(com.libraryproject.inportordumpbdd.xsd.Category category : categories)
         {
-            System.err.println("add category");
             Category categoryTmp = new Category(category.getName(),new HashSet<Book>());
             categoryTmp.setId(category.getId().intValue());
             this.mCategoryHelper.create(categoryTmp);
@@ -111,7 +109,6 @@ public class AddXmlToBdd {
         // put all author inside the database        
         for(com.libraryproject.inportordumpbdd.xsd.Author author : authors)
         {
-            System.err.println("add author");
             Author authorTmp = new Author(author.getName(), new HashSet<Book>());
             authorTmp.setId(author.getId().intValue());
             this.mAuthorHelper.create(authorTmp);
@@ -124,7 +121,7 @@ public class AddXmlToBdd {
             Author authorTmp = this.mAuthorHelper.find(book.getAuthorId().intValue());
             Category categoryTmp = this.mCategoryHelper.find(book.getCategoryId().intValue());
             
-            Book bookTmp = new Book(authorTmp, categoryTmp, book.getTitle(), new BigDecimal(book.getPrice()), book.getDescription(), book.getStock().intValue(), imagePath.get(book.getImage()));
+            Book bookTmp = new Book(authorTmp, categoryTmp, book.getTitle(), new BigDecimal(0), book.getDescription(), book.getStock().intValue(), book.getImage());
             this.mBookHelper.create(bookTmp);
         }
 

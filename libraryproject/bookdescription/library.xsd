@@ -51,7 +51,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="title"/>
-        <xs:element ref="price"/>
         <xs:element ref="description"/>
         <xs:element ref="stock"/>
         <xs:element ref="image"/>
@@ -61,7 +60,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="title" type="xs:NCName"/>
-  <xs:element name="price" type="xs:integer"/>
   <xs:element name="description" type="xs:NCName"/>
   <xs:element name="stock" type="xs:integer"/>
   <xs:element name="image" type="xs:NCName"/>

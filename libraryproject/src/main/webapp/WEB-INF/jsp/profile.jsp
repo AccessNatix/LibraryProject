@@ -3,37 +3,58 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:generic_page title="Profile page">
+<t:generic_page title="Profile information page">
 
 <jsp:attribute name="body_area">
+    
+    <!-- Page Content -->
+    
+    <div class="width60 center-block">
         
-    <div class="relativeContainer">
-        <div id="signup">
-            <h1 class="text-center margin-h20 clearfix">Modification of your account</h1>
-
-            <form action="<c:url value="/modification"/>" method="POST" class="box-center width40 fieldset-mt20">
-              <fieldset class="form-group">
-                <label for="nameinput">Name</label>
-                <input type="text" class="form-control" id="nameinput" name="name" placeholder="Enter name" value="${name}" required/>
-              </fieldset>
-              <fieldset class="form-group">
-                <label for="surnameinput">Surname</label>
-                <input type="text" class="form-control" id="surnameinput" name="surname" placeholder="Enter surname" value="${surname}" required/>
-              </fieldset>  
-              <fieldset class="form-group">
-                <label for="emailinput">Email</label>
-                <input type="email" class="form-control" id="emailinput" name="email" placeholder="Enter email" value="${email}" required/>
-              </fieldset>
-              <fieldset class="form-group">
-                <label for="usernameinput">Username</label>
-                <input type="text" class="form-control" id="usernameinput" name="username" placeholder="Enter username" value="${username}" required/>
-              </fieldset>
-
-              <button type="submit" class="btn btn-primary">Modifify my account</button>
-            </form>
+        <h1 class="text-center margin-h20 clearfix">Profile Information</h1>
+        <div class="margin-h20 bookInfo">
+            <div class="leftSide margin-l10p">
+                <img src="<c:url value="/includes/images/default_profile.jpg"/>" width="250" alt="" title="" />
+                <a href="profile.jsp"></a>
+                <span></span>
+            </div>
+            <div class="Information rightSide">
+                <table border="0">
+                    <tr>
+                        <td>Full Name: </td>
+                        <td>${user.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Surname: </td>
+                        <td>${user.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td>${user.mail}</td>
+                    </tr>
+                    <tr>
+                        <td>Username: </td>
+                        <td>${user.username}</td>
+                    </tr>
+                    <tr>
+                        <td>Burrowed books </td>
+                        <td>
+                            <div class="listBurrowed">
+                                <ul class="list-unstyled">
+                                    <c:forEach var="borrowed" items="${borroweds}">
+                                        <li><a href='<c:url value="/book/${borrowed.book.id}" />'>${borrowed.book.name}</a> by ${borrowed.book.name}<a href="<c:url value="/book/return/${borrowed.id}"/>" class="btn btn-primary padding-w20">Return</a></li></br>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-
+                
     </div>
+    
+    <!-- /.container -->
 
 </jsp:attribute>
     

@@ -24,60 +24,28 @@
                 </div>
                 <div class="pg-content">
                     <ul>
-                        <li>
-                            <a href="#">Electronics</a>
-                        </li>
-                        <li>
-                            <a href="#">Computer Science</a>
-                        </li>
-                        <li>
-                            <a href="#">Mathematics</a>
-                        </li>
-                        <li>
-                            <a href="#">Physics</a>
-                        </li>
-                        <li>
-                            <a href="#">Mecanics</a>
-                        </li>
-                        <li>
-                            <a href="#">Biology</a>
-                        </li>
+                        <c:forEach var="category" items="${categories}">
+                            <li>
+                                <a href="<c:url value="/news/categoryid/${category.id}"/>">${category.name}</a>
+                            </li>                        
+                        </c:forEach>
                     </ul>
                     <a class="more navbar-right margin-r40 margin-t10" href="#">List All ></a>
                 </div>
             </div>
             <div id="mostPopular">
                 <div class="pg-title">
-                    <span>Most popular books</span>
+                    <span>Recent books</span>
                 </div>
                 <div class="pg-content">
                     <ul>
-                        <li>
-                            <a href="#">Book #1</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
-                        <li>
-                            <a href="#">Book #2</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
-                        <li>
-                            <a href="#">Book #3</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
-                        <li>
-                            <a href="#">Book #4</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
-                        <li>
-                            <a href="#">Book #5</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
-                        <li>
-                            <a href="#">Book #6</a>
-                            <span class="bookAuthor">by Author Name</span>
-                        </li>
+                        <c:forEach var="recent" items="${recents}">
+                            <li>
+                                <a href="<c:url value="/book/${recent.id}" />">${recent.name}</a>
+                            </li>                        
+                        </c:forEach>
                     </ul>
-                    <a class="more navbar-right margin-r40 margin-t10" href="#">List All ></a>
+                    <a class="more navbar-right margin-r40 margin-t10" href="<c:url value="/news" />">List All ></a>
                 </div>
             </div>
             <div id="search">
@@ -85,12 +53,14 @@
                     <span>Search</span>
                 </div>
                 <div class="pg-content">
+                    <form action="<c:url value="/news"/>" id="searchForm" method="POST">
                     <input id="s" name="seach" type="search" placeholder="Search ...">
                     <div id="searchCategories">
-                        <div class="radio"><label><input type="radio" name="searchCategory" value="BookName" checked="checked" />Book Name</label></div>
-                        <div class="radio"><label><input type="radio" name="searchCategory" value="AuthorName" />Author Name</label></div>
-                        <div class="radio"><label><input type="radio" name="searchCategory" value="BookCategory" />Book Category</label></div>
+                        <div class="radio"><label><input type="radio" class="top--2" name="searchCategory" value="name" checked="checked" />Book Name</label></div>
+                        <div class="radio"><label><input type="radio" class="top--2" name="searchCategory" value="author" />Author Name</label></div>
+                        <div class="radio"><label><input type="radio" class="top--2" name="searchCategory" value="category" />Book Category</label></div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

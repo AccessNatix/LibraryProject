@@ -49,12 +49,24 @@ public class AuthorHelper extends GenericHelper{
         trans.commit();
         this.closeSession();
     }
+  
+    public void reset()
+    {
+        deleteAll();
+        
+        this.openSession();
+        Transaction trans = this.session.beginTransaction();
+        this.session.createSQLQuery("ALTER TABLE author AUTO_INCREMENT = 1;").executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }    
+    
     
     public void deleteAll()
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
-        String hql = "DELETE com.libraryproject.entity.Book";
+        String hql = "DELETE com.libraryproject.entity.Author";
         Query query = this.session.createQuery(hql);
         query.executeUpdate();
         trans.commit();

@@ -11,14 +11,21 @@ import java.io.Serializable;
 public class SessionBean implements Serializable{
    
     private final int id;
+    private final boolean type;
     
-    public SessionBean(int id)
+    public SessionBean(int id, boolean type)
     {
         this.id = id;
+        this.type = type;
     }
     
     public int getId()
     {
         return this.id;
+    }
+    
+    public boolean getType()
+    {
+        return this.type;
     }
 }

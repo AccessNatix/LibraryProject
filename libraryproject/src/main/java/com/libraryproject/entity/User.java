@@ -1,5 +1,5 @@
 package com.libraryproject.entity;
-// Generated 11 déc. 2015 20:36:41 by Hibernate Tools 4.3.1
+// Generated 13 déc. 2015 17:11:41 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -17,6 +17,7 @@ public class User  implements java.io.Serializable {
      private String mail;
      private String username;
      private String password;
+     private Boolean type;
      private Set<Borrowed> borroweds = new HashSet<Borrowed>(0);
 
     public User() {
@@ -28,12 +29,13 @@ public class User  implements java.io.Serializable {
         this.username = username;
         this.password = password;
     }
-    public User(String name, String surname, String mail, String username, String password, Set<Borrowed> borroweds) {
+    public User(String name, String surname, String mail, String username, String password, Boolean type, Set<Borrowed> borroweds) {
        this.name = name;
        this.surname = surname;
        this.mail = mail;
        this.username = username;
        this.password = password;
+       this.type = type;
        this.borroweds = borroweds;
     }
    
@@ -78,6 +80,13 @@ public class User  implements java.io.Serializable {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    public Boolean getType() {
+        return this.type;
+    }
+    
+    public void setType(Boolean type) {
+        this.type = type;
     }
     public Set<Borrowed> getBorroweds() {
         return this.borroweds;

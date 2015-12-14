@@ -1,5 +1,33 @@
-
 $(document).ready(function(e){
+    
+    $(document).on('keyup', '#s', function(e){
+        if(e.keyCode==13)
+            $('form#searchForm').submit();
+    });
+    
+    $(document).on('click', '.edit', function(e){
+        if(!$(this).hasClass('change-page')){
+            $(this).addClass('hidden');
+            $(this).parent().find('.btn').removeClass('hidden');
+            $(this).parent().parent().find('.span-text').addClass('active');
+            return false;
+        }
+    });
+   
+   $(document).on('click', '.menuOption', function(e){
+       var id = $(this).attr('id');
+       $('.menuOption').removeClass('active');
+       $(this).addClass('active');
+       if(id === "content"){
+           $('#updownload').addClass('hidden').fadeOut(100);
+           $('#contentmanager').removeClass('hidden').fadeIn(1000);
+           
+       }else if(id === "loader"){
+           $('#contentmanager').addClass('hidden').fadeOut(100);
+           $('#updownload').removeClass('hidden').fadeIn(1000);
+       }
+   });
+   
    
    $('.relativeContainer').height($('#signup').height());
    
@@ -14,7 +42,14 @@ $(document).ready(function(e){
        $('#error-signup-msg').css('display', 'block').text("Username or Email alreay exists!");
    }else if(getUrlParameter("string")==="ERROR_REGISTER_PASSWORD"){
        $('#error-signup-msg').css('display', 'block').text("Please enter the same password in the repeat password field!");
+   }else if(getUrlParameter("string")==="ERROR_NO_STOCK"){
+       $('#error-msg').css('display', 'block').text("No stock anymore");
+   }else if(getUrlParameter("string")==="ERROR_FULL_BORROW"){
+       $('#error-msg').css('display', 'block').text("Return one book before borrowing a new one");
+   }else if(getUrlParameter("string")==="ERROR_SAME_BOOK"){
+       $('#error-msg').css('display', 'block').text("You already borrowed this book!");
    }
+   
    $(document).on('click', 'a#signinlnk', function(e){
         var pathname = window.location.pathname;
         if($.trim(pathname)==="/libraryproject/register"){
@@ -47,5 +82,18 @@ $(document).ready(function(e){
             }
         }
     };
+    
+    $('#stock').hover(function(e){
+        var pos = $(this).position();
+        $('#bull').show();
+    }, function(e){
+        $('#bull').hide();
+    });
+    
+   $( "#contentmanager" ).accordion({
+      collapsible: true, 
+      icons : null,
+      heightStyle: "content"
+    });
    
 });

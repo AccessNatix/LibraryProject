@@ -1,5 +1,5 @@
 package com.libraryproject.entity;
-// Generated 11 déc. 2015 20:36:41 by Hibernate Tools 4.3.1
+// Generated 13 déc. 2015 17:11:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -19,14 +19,14 @@ public class Book  implements java.io.Serializable {
      private BigDecimal price;
      private String description;
      private int stock;
-     private byte[] image;
+     private String image;
      private Set<Borrowed> borroweds = new HashSet<Borrowed>(0);
 
     public Book() {
     }
 
 	
-    public Book(Author author, Category category, String name, BigDecimal price, String description, int stock, byte[] image) {
+    public Book(Author author, Category category, String name, BigDecimal price, String description, int stock, String image) {
         this.author = author;
         this.category = category;
         this.name = name;
@@ -35,7 +35,7 @@ public class Book  implements java.io.Serializable {
         this.stock = stock;
         this.image = image;
     }
-    public Book(Author author, Category category, String name, BigDecimal price, String description, int stock, byte[] image, Set<Borrowed> borroweds) {
+    public Book(Author author, Category category, String name, BigDecimal price, String description, int stock, String image, Set<Borrowed> borroweds) {
        this.author = author;
        this.category = category;
        this.name = name;
@@ -95,11 +95,11 @@ public class Book  implements java.io.Serializable {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    public byte[] getImage() {
+    public String getImage() {
         return this.image;
     }
     
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
     public Set<Borrowed> getBorroweds() {

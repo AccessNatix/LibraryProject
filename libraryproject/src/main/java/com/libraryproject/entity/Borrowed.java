@@ -1,5 +1,5 @@
 package com.libraryproject.entity;
-// Generated 11 déc. 2015 20:36:41 by Hibernate Tools 4.3.1
+// Generated 13 déc. 2015 17:11:41 by Hibernate Tools 4.3.1
 
 
 

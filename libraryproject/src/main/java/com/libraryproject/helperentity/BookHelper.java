@@ -1,6 +1,7 @@
 package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.Book;
+import com.libraryproject.entity.Borrowed;
 import java.util.List;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
@@ -39,6 +40,18 @@ public class BookHelper extends GenericHelper{
         this.closeSession();
     }
     
+    public void reset()
+    {
+        deleteAll();
+        
+        this.openSession();
+        Transaction trans = this.session.beginTransaction();
+        this.session.createSQLQuery("ALTER TABLE book AUTO_INCREMENT = 1;").executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }    
+        
+    
     public void deleteAll()
     {
         this.openSession();
@@ -60,6 +73,13 @@ public class BookHelper extends GenericHelper{
         
         Hibernate.initialize(results.getCategory());
         Hibernate.initialize(results.getAuthor());
+        Hibernate.initialize(results.getBorroweds());
+        
+        for(Borrowed borrow : results.getBorroweds())
+        {
+            Hibernate.initialize(borrow.getBook());
+            Hibernate.initialize(borrow.getUser());
+        }        
         
         trans.commit();
         this.closeSession();
@@ -79,6 +99,13 @@ public class BookHelper extends GenericHelper{
         {
             Hibernate.initialize(result.getAuthor());
             Hibernate.initialize(result.getCategory());
+            Hibernate.initialize(result.getBorroweds());
+            
+            for(Borrowed borrow : result.getBorroweds())
+            {
+                Hibernate.initialize(borrow.getBook());
+                Hibernate.initialize(borrow.getUser());
+            }        
         }
         
         trans.commit();

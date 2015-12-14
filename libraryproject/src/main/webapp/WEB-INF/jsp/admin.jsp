@@ -51,7 +51,7 @@
                     <div class="width80 center-block">
                         <h4 class="text-center margin-t10 margin-b20">Add a Book</h4>
                         <div class="addBook">
-                            <form method="POST" action="">
+                            <form method="POST" action="<c:url value="/book/add"/>">
                                 <table class="width80 center-block formtable">
                                     <tr>
                                         <td>Name</td>
@@ -65,11 +65,9 @@
                                         <td>Author</td>
                                         <td>
                                             <select name="author">
-                                                <option value="id">Author name</option>
-                                                <option value="id">Author name</option>
-                                                <option value="id">Author name</option>
-                                                <option value="id">Author name</option>
-                                                <option value="id">Author name</option>
+                                                <c:forEach var="author" items="${authors}">
+                                                <option value="${author.id}">${author.name}</option>
+                                                </c:forEach>
                                             </select>
                                         </td>
                                     </tr>
@@ -77,17 +75,15 @@
                                         <td>Category</td>
                                         <td>
                                             <select name="category">
-                                                <option value="id">Category name</option>
-                                                <option value="id">Category name</option>
-                                                <option value="id">Category name</option>
-                                                <option value="id">Category name</option>
-                                                <option value="id">Category name</option>
+                                                <c:forEach var="category" items="${categories}">
+                                                <option value="${category.id}">${category.name}</option>
+                                                </c:forEach>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>In Stock</td>
-                                        <td><input type="text" name="instock" placeholder="Available items in stock" /></td>
+                                        <td><input type="number" name="instock" placeholder="Available items in stock" /></td>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
@@ -118,78 +114,17 @@
                                 </tr>
                             </thead>
                             <tbody class="tbody">
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<c:url value="/book/id" />">Book Name</a></td>
-                                    <td>Author name</td>
-                                    <td>Category</td>
-                                    <td>90 left</td>
-                                    <td class="text-center"><a href="#" class="edit change-page" title="edit">EDIT</a></td>
-                                    <td class="text-center"><a href="#" class="del" title="delete">x</a></td>
-                                </tr>
+                            <c:forEach var="book" items="${books}">
+                            <tr>   
+                                    <td><a href="<c:url value="/book/id" />">${book.name}</a></td>
+                                    <td>${book.author.name}</td>
+                                    <td>${book.category.name}</td>
+                                    <td>${book.stock}</td>
+                                    <td class="text-center"><a href="<c:url value="/book/${book.id}/edit" />" class="edit change-page" title="edit">EDIT</a></td>
+                                    <td class="text-center"><a href="<c:url value="/book/${book.id}/del" />" class="del" title="delete">x</a></td>
+                            </tr>
+                            </c:forEach>
+
                             </tbody>
                         </table>
                     </div>
@@ -198,12 +133,10 @@
                 <h3>Categories management</h3>
                 <div>
                   
-                    
-                    
                     <div class="width80 center-block">
                         <h4 class="text-center margin-t10 margin-b20">Add a Category</h4>
                         <div class="addCategory">
-                            <form method="POST" action="/admin/category/add">
+                            <form method="POST" action="<c:url value="/admin/category/add"/>">
                                 <table class="width80 center-block formtable">
                                     <tr>
                                         <td class="text-right padding-w30">Name</td>
@@ -229,26 +162,29 @@
                             </thead>
                             <tbody class="tbody">
                                 <c:forEach var="category" items="${categories}">
-                                    <tr>    
-                                        <form method="post" action="<c:url value="/admin/user/add"/>">
-                                            <td><input type="text" name="category_name" value=${category.name} class="span-text" /></td>
-                                            <td class="text-center"><input type="submit" class="btn btn-default hidden" title="confirm" value="CONFIRM" /><a href="<c:url value="/admin/category/${category.id}/edit"/>" class="edit" title="edit">EDIT</a></td>
-                                            <td class="text-center"><a href="<c:url value="/admin/category/${category.id}/del"/>" class="del" title="delete">x</a></td>
-                                        </form>
-                                    </tr>
+                                <tr>
+                                     <form method="post" action="<c:url value="/admin/category/edit"/>">
+                                         <td><input type="text" name="name" value="${category.name}" class="span-text" /></td>
+                                         <input type="hidden" name="id" value="${category.id}"/>
+                                         <td class="text-center"><input type="submit" class="btn btn-default hidden" title="confirm" value="CONFIRM" /><a href="#" class="edit" title="edit">EDIT</a></td>
+                                         <td class="text-center"><a href="<c:url value="/admin/category/${category.id}/del"/>" class="del" title="delete">x</a></td>
+                                     </form>
+                                 </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
                     </div>
                     
+                    
+                    
                 </div>
                 <h3>Authors management</h3>
                 <div>
-                  
+                    
                     <div class="width80 center-block">
                         <h4 class="text-center margin-t10 margin-b20">Add an Author</h4>
                         <div class="addCategory">
-                            <form method="POST" action="/admin/author/add">
+                            <form method="POST" action="<c:url value="/admin/author/add"/>">
                                 <table class="width80 center-block formtable">
                                     <tr>
                                         <td class="text-right padding-w30">Name</td>
@@ -273,18 +209,20 @@
                                 </tr>
                             </thead>
                             <tbody class="tbody">
-                                <c:forEach var="category" items="${categories}">
-                                    <tr>    
-                                        <form method="post" action="<c:url value="/admin/author/add"/>">
-                                            <td><input type="text" name="author_name" value=${category.name} class="span-text" /></td>
-                                            <td class="text-center"><input type="submit" class="btn btn-default hidden" title="confirm" value="CONFIRM" /><a href="#" class="edit" title="edit">EDIT</a></td>
-                                            <td class="text-center"><a href="<c:url value="/admin/category/${category.id}/del"/>" class="del" title="delete">x</a></td>
-                                        </form>
-                                    </tr>
+                                <c:forEach var="author" items="${authors}">
+                                <tr>
+                                    <form method="post" action="<c:url value="/admin/author/edit"/>">
+                                        <td><input type="text" name="name" value="${author.name}" class="span-text" /></td>
+                                        <input type="hidden" name="id" value="${author.id}"/>
+                                        <td class="text-center"><input type="submit" class="btn btn-default hidden" title="confirm" value="CONFIRM" /><a href="#" class="edit" title="edit">EDIT</a></td>
+                                        <td class="text-center"><a href="<c:url value="/admin/author/${author.id}/del"/>" class="del" title="delete">x</a></td>
+                                    </form>
+                                 </tr>
                                 </c:forEach>
                             </tbody>
                         </table>
-                    </div>              
+                    </div>
+                                        
                     
                 </div>
             </div>
@@ -295,29 +233,20 @@
                     <h2 class="title">UPLOAD THE DATABASE</h2>
                     <div class="upload">
                         <form method="post" action="<c:url value="/import"/>" enctype="multipart/form-data">
-                            <input type="file" name="file" title="" value="upload" class="inline"
+                            <input type="file" name="file" title="" value="upload" class="inline" required
                                    accept=".zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed" />
                             <input type="submit" class="btn btn-default inline margin-lr5" value="UPLOAD" />
                         </form>
                     </div>
                 </div>
-                <div class="separator">
-                    <span>OR</span>
-                    <hr class="hr" />
-                </div>
-                <div class="downloader" align="center">
-                    <h2 class="title">DOWNLOAD THE DATABASE</h2>
-                    <div class="download">
-                        <a href="#" class="btn btn-primary padding-w30">DOWNLOAD</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
     
     <!-- /.container -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="<c:url value="/includes/css/jquery-ui.css" />">
+    <script src="<c:url value="/includes/js/jquery-ui.js"/>"></script>
 
 </jsp:attribute>
     

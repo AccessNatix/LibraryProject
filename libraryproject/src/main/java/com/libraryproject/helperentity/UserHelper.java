@@ -5,6 +5,7 @@
  */
 package com.libraryproject.helperentity;
 
+import com.libraryproject.entity.Borrowed;
 import com.libraryproject.entity.User;
 import java.util.List;
 import org.hibernate.Hibernate;
@@ -41,6 +42,18 @@ public class UserHelper extends GenericHelper{
     {
         // not yet implemented
     }
+    
+    public void reset()
+    {
+        deleteAll();
+        
+        this.openSession();
+        Transaction trans = this.session.beginTransaction();
+        this.session.createSQLQuery("ALTER TABLE user AUTO_INCREMENT = 1;").executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }
+
     
     public void deleteAll()
     {
@@ -98,7 +111,16 @@ public class UserHelper extends GenericHelper{
         Query query = this.session.createQuery(hql).setInteger("id", id);
         User result = (User) query.uniqueResult();
         
-        Hibernate.initialize(result.getBorroweds());
+        if(result.getBorroweds() != null)
+        {
+            Hibernate.initialize(result.getBorroweds());      
+
+            for(Borrowed borrow : result.getBorroweds())
+            {
+                Hibernate.initialize(borrow.getBook());
+                Hibernate.initialize(borrow.getUser());            
+            }            
+        }
         
         trans.commit();
         this.closeSession();

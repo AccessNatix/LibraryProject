@@ -5,6 +5,7 @@
  */
 package com.libraryproject.controller;
 
+import com.libraryproject.entity.User;
 import com.libraryproject.helperentity.UserHelper;
 import com.libraryproject.utility.SessionBean;
 import javax.servlet.http.HttpServletRequest;
@@ -40,19 +41,20 @@ public class ControllerLoginLogout {
 
         int id = userHelper.identification(username, password);
         
+        User user = userHelper.find(id);
+        
         if(id != -1)
         {
             HttpSession session = request.getSession();
-            SessionBean bean = new SessionBean(id);
+            SessionBean bean = new SessionBean(id,user.getType());
             session.setAttribute("user", bean);
+            
             return new ModelAndView("redirect:/");
             
         }
         else
         {
-            ModelAndView view = new ModelAndView();
-            view.setView(new RedirectView("register?signin"));
-            view.addObject("ERROR_SIGNIN");
+            ModelAndView view = new ModelAndView(new RedirectView("register?string=ERROR_SIGNIN"));
             return view;
         }
     }
@@ -63,7 +65,7 @@ public class ControllerLoginLogout {
         HttpSession session = request.getSession();
         session.setAttribute("user", null);
         
-        return new ModelAndView("index");
+        return new ModelAndView("redirect:/");
     }
     
     

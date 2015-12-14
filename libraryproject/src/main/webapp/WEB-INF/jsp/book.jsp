@@ -14,11 +14,15 @@
         <h1 class="text-center margin-h20 clearfix">Book Information</h1>
         <div class="margin-h20 bookInfo">
             <div class="leftSide">
-                <img src="<c:url value="/images/${image}"/>" width="250" alt="" title="" />
+                <img src="<c:url value="/includes/images/${image}"/>" width="250" alt="" title="" />
                 <span></span>
             </div>
             <div class="Information rightSide">
                 <table border="0">
+                    <tr>
+                        <td></td>
+                        <td><span class="error-msg" id="error-msg"></span></td>
+                    </tr>
                     <tr>
                         <td>Title: </td>
                         <td>${title}</td>
@@ -27,9 +31,22 @@
                         <td>By: </td>
                         <td>${author}</td>
                     </tr>
-                    <tr>
+                    <tr id="stock">
                         <td>Stock: </td>
-                        <td>99 available</td>
+                        <td>99 available
+                            <div class="bull center-block margin-t30" id="bull">
+                                <h4 class="text-center bullTitle">Burrowed By:</h4>
+                                <div class="listBurrowed">
+                                    <ul class="specialul">
+                                        <c:forEach var="user" items="${users}">
+                                            <li>${user.name} ${user.surname} (${user.username})</li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>                           
+                        </td>
+                        
+                        
                     </tr>
                     <tr>
                         <td>Category: </td>
@@ -42,12 +59,13 @@
                     <tr>
                         <td></td>
                         <td>
-                            <a href="#" title="" class="btn btn-primary padding-w30" >Burrow</a>
+                            <a href="<c:url value="/borrowed/${id}"/>" title="" class="btn btn-primary padding-w30" >Borrow</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
+                                
     </div>
     
     <!-- /.container -->
@@ -55,3 +73,4 @@
 </jsp:attribute>
     
 </t:generic_page>
+

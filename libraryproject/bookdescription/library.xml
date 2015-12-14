@@ -32,7 +32,6 @@
     <books>
         <book>
             <title>apple</title>
-            <price>10</price>
             <description>hello</description>
             <stock>30</stock>
             <image>blankbook.jpg</image>
@@ -41,7 +40,6 @@
         </book>
         <book>
             <title>violon</title>
-            <price>10</price>
             <description>hello</description>
             <stock>30</stock>
             <image>blankbook.jpg</image>

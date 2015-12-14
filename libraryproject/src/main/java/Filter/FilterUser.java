@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Filter;
 
 import com.libraryproject.utility.SessionBean;
@@ -25,7 +20,7 @@ public class FilterUser implements HandlerInterceptor{
         
         if(bean == null)
         {
-            hsr1.sendRedirect(hsr.getContextPath());
+            hsr1.sendRedirect(hsr.getContextPath()+"/login");
             return false;
         }
         

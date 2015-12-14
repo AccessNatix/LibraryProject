@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.libraryproject.helperentity;
 
 import com.libraryproject.entity.Borrowed;
@@ -28,7 +23,7 @@ public class BorrowedHelper extends GenericHelper{
     {
         this.openSession();
         Transaction trans= this.session.beginTransaction();
-        this.session.save(borrowed);
+        this.session.delete(borrowed);
         trans.commit();
         this.closeSession();
     }
@@ -41,6 +36,17 @@ public class BorrowedHelper extends GenericHelper{
         trans.commit();
         this.closeSession();
     }
+    
+    public void reset()
+    {
+        deleteAll();
+        
+        this.openSession();
+        Transaction trans = this.session.beginTransaction();
+        this.session.createSQLQuery("ALTER TABLE borrowed AUTO_INCREMENT = 1;").executeUpdate();
+        trans.commit();
+        this.closeSession();
+    }    
     
     public void deleteAll()
     {

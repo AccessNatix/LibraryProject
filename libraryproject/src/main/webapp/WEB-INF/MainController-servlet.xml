@@ -29,15 +29,21 @@
         
         <mvc:interceptors>
             <mvc:interceptor>
-                <mvc:mapping path="/profil"/>
+                <mvc:mapping path="/profile"/>
+                <mvc:mapping path="/news/**"/>
+                <mvc:mapping path="/borrowed/**"/>
+                <mvc:mapping path="/book/**"/>
+                <mvc:mapping path="/admin"/>
+                                
                 <bean class="Filter.FilterUser" />
             </mvc:interceptor>
+            
         </mvc:interceptors> 
                 
         <mvc:resources mapping="/bootstraps/**" location="/bootstraps/theme1/" /> 
         <mvc:resources mapping="/includes/**" location="/includes/**" />
         <mvc:resources mapping="/images/**" location="/includes/images/**" />
-        <mvc:resources mapping="/books/**" location="/includes/books/**" />
+        <mvc:resources mapping="/books/**" location="/includes/books/" />
  
         <!-- configure all aspects of my project -->
         <aop:config>
