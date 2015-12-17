@@ -64,6 +64,11 @@ public class ControllerNews {
         AuthorHelper helper = new AuthorHelper();
         Author author = helper.find(id);
         
+        if(author == null)
+        {
+            return new ModelAndView("redirect:/news");
+        }
+        
         CategoryHelper helperCategory = new CategoryHelper();
         List<Category> categories = helperCategory.findAll();
         
@@ -132,6 +137,11 @@ public class ControllerNews {
         CategoryHelper helper = new CategoryHelper();
         List<Category> categories = helper.findAll();
         Category category = helper.find(id);
+        
+        if(category == null)
+        {
+            return new ModelAndView("redirect:/news");
+        }
         
         ModelAndView view = new ModelAndView("news");
         view.addObject("categories",categories);

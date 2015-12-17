@@ -18,7 +18,7 @@
                 <span></span>
             </div>
             <div class="Information rightSide">
-                <form method="POST" action="<c:url value="/book/${book.id}/edit/"/>">
+                <form method="POST" action="<c:url value="/book/${book.id}/edit/"/>" enctype="multipart/form-data">
                     <table border="0" class="width80 center-block formtable">
                         <tr>
                             <td>Title: </td>
@@ -26,7 +26,7 @@
                         </tr>
                         <tr>
                             <td>Cover Image</td>
-                            <td><input type="text" name="image_url" value="${book.image}" placeholder="Image URL" /></td>
+                            <td><input type="file" name="image_url" value="${book.image}" placeholder="${book.image}" /></td>
                         </tr>
                         <tr>
                             <td>Author</td>

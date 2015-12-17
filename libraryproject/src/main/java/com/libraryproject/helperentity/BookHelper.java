@@ -71,6 +71,11 @@ public class BookHelper extends GenericHelper{
         Query query = session.createQuery(hql).setInteger("id", id);
         Book results = (Book) query.uniqueResult();
         
+        if(results == null)
+        {
+            return null;
+        }
+        
         Hibernate.initialize(results.getCategory());
         Hibernate.initialize(results.getAuthor());
         Hibernate.initialize(results.getBorroweds());

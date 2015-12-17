@@ -206,6 +206,7 @@ public class ControllerAdmin {
                     {
                         if(zipContents.containsKey(init.getPathlibrary()))
                         {
+                            System.err.println("Start parsing");
                             xmlLoader.loadXmlInDatabase(init.getPathlibrary(), zipContents);
                         }
                     }

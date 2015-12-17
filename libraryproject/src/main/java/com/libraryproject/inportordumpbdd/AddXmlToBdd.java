@@ -98,6 +98,7 @@ public class AddXmlToBdd {
             this.mUserHelper.save(userTmp);
         }
         
+        
         // put all category inside the database
         for(com.libraryproject.inportordumpbdd.xsd.Category category : categories)
         {
@@ -105,7 +106,7 @@ public class AddXmlToBdd {
             categoryTmp.setId(category.getId().intValue());
             this.mCategoryHelper.create(categoryTmp);
         }
-        
+                
         // put all author inside the database        
         for(com.libraryproject.inportordumpbdd.xsd.Author author : authors)
         {

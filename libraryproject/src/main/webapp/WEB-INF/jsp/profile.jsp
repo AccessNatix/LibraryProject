@@ -42,7 +42,7 @@
                             <div class="listBurrowed">
                                 <ul class="list-unstyled">
                                     <c:forEach var="borrowed" items="${borroweds}">
-                                        <li><a href='<c:url value="/book/${borrowed.book.id}" />'>${borrowed.book.name}</a> by ${borrowed.book.name}<a href="<c:url value="/book/return/${borrowed.id}"/>" class="btn btn-primary padding-w20">Return</a></li></br>
+                                        <li><a href='<c:url value="/book/${borrowed.book.id}" />'>${borrowed.book.name}</a> by ${borrowed.book.name} <a href="<c:url value="/book/return/${borrowed.id}"/>" class="padding-w20">(Return)</a></li></br>
                                     </c:forEach>
                                 </ul>
                             </div>

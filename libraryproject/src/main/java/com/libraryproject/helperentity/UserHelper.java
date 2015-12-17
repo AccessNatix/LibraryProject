@@ -111,6 +111,11 @@ public class UserHelper extends GenericHelper{
         Query query = this.session.createQuery(hql).setInteger("id", id);
         User result = (User) query.uniqueResult();
         
+        if(result == null)
+        {
+            return null;
+        }
+        
         if(result.getBorroweds() != null)
         {
             Hibernate.initialize(result.getBorroweds());      

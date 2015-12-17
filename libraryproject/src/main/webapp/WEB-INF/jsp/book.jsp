@@ -18,6 +18,17 @@
                 <span></span>
             </div>
             <div class="Information rightSide">
+                <div class="bull center-block margin-t30" id="bull">
+                    <h4 class="text-center bullTitle">Burrowed By:</h4>
+                    <div class="listBurrowed">
+                        <ul class="specialul">
+                            <c:forEach var="user" items="${users}">
+                                <li>${user.name} ${user.surname} (${user.username})</li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>      
+                
                 <table border="0">
                     <tr>
                         <td></td>
@@ -33,20 +44,7 @@
                     </tr>
                     <tr id="stock">
                         <td>Stock: </td>
-                        <td>99 available
-                            <div class="bull center-block margin-t30" id="bull">
-                                <h4 class="text-center bullTitle">Burrowed By:</h4>
-                                <div class="listBurrowed">
-                                    <ul class="specialul">
-                                        <c:forEach var="user" items="${users}">
-                                            <li>${user.name} ${user.surname} (${user.username})</li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </div>                           
-                        </td>
-                        
-                        
+                        <td>${stock}</td>
                     </tr>
                     <tr>
                         <td>Category: </td>

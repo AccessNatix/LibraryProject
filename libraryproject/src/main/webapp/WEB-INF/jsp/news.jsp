@@ -48,7 +48,7 @@
                 <c:forEach var="book" items="${books}">
                     <a href="<c:url value="/book/${book.id}"/>" class="bookInfoLnk">
                         <div class="booksItem">
-                            <img src="<c:url value="/includes/images/${book.image}"/>" width="140" alt="" title="" />
+                            <img src="<c:url value="/includes/images/${book.image}"/>" width="140" height="194" alt="" title="" />
                             <span class="booksInfo">
                                 ${book.name} <span class="by">by</span> <span class="author-name">${book.author.name}</span>
                             </span>

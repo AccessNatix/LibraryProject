@@ -51,7 +51,7 @@
                     <div class="width80 center-block">
                         <h4 class="text-center margin-t10 margin-b20">Add a Book</h4>
                         <div class="addBook">
-                            <form method="POST" action="<c:url value="/book/add"/>">
+                            <form method="POST" action="<c:url value="/book/add"/>" enctype="multipart/form-data">
                                 <table class="width80 center-block formtable">
                                     <tr>
                                         <td>Name</td>
@@ -59,7 +59,7 @@
                                     </tr>
                                     <tr>
                                         <td>Cover Image</td>
-                                        <td><input type="text" name="image_url" placeholder="Image URL" /></td>
+                                        <td><input type="file" name="image_url"></td>
                                     </tr>
                                     <tr>
                                         <td>Author</td>

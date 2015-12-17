@@ -84,8 +84,7 @@ $(document).ready(function(e){
     };
     
     $('#stock').hover(function(e){
-        var pos = $(this).position();
-        $('#bull').show();
+        $('#bull').css('margin-top',$('#stock').height()*3).show();
     }, function(e){
         $('#bull').hide();
     });

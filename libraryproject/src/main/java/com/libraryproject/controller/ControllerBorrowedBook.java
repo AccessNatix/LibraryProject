@@ -112,6 +112,12 @@ public class ControllerBorrowedBook {
             BookHelper bookHelper = new BookHelper();
             Book book = bookHelper.find(id);
             
+            if(book == null)
+            {
+                ModelAndView view = new ModelAndView("redirect:/news");
+                return view; 
+            }
+            
             if(book.getStock() > 0)
             {
                 book.setStock(book.getStock()-1);
